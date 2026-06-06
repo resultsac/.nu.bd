@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>National University::Results Archive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7fb;
+            min-height: 100vh;
+        }
+
+        .header-banner {
+            background-color: #1276CC;
+            background-image: url('assets/slide_vector.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .header-banner img {
+            height: 100px;
+            margin-bottom: 5px;
+        }
+
+        .header-banner h2 {
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .search-container {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin-top: -50px;
+        }
+
+        .btn-custom {
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .btn-custom:hover {
+            transform: scale(1.03);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-control{
+
+            background: #ddd;
+            font-size: 0.875rem;
+        }
+         .form-select-lg{
+
+            background: #ddd;
+            font-size: 0.875rem;
+        }
+        .form-control:focus,
+        .form-select:focus {
+            box-shadow: 0 0 8px rgba(18, 118, 204, 0.3);
+            border-color: #1276CC;
+        }
+
+        .pdf-section {
+            display: none;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .pdf-section.show {
+            display: block;
+        }
+
+        /* Smooth fade for CAPTCHA question */
+        .captcha-fade {
+            transition: opacity 0.5s ease-in-out;
+            display: inline-block;
+        }
+
+        .captcha-fade.hidden {
+            opacity: 0;
+        }
+
+
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+        }
+
+        .navbar {
+            background-color: #4494D0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1020;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #007842 !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #FFF !important;
+            font-weight: bold;
+            margin: 0 12px;
+            transition: color 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #FFF !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+           #feedback {
+
+            height: 0px;
+            width: 85px;
+            position: fixed;
+            right: 0;
+            top: 70%;
+            z-index: 1000;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+            -o-transform: rotate(-90deg);
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
+
+        #feedback span {
+            display: block;
+            background: #00803C;
+            height: 52px;
+            padding-top: 10px;
+            width: 210px;
+            text-align: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header-banner">
+        <img src="assets/logo.png" alt="National University Logo">
+        <h2>National University, Bangladesh</h2>
+        <p style="font-size: 16px; opacity: 0.9;"><b>Results Archive</b></p>
+    </div>
+    <div id="feedback">
+        <span>Results Archive</span>
+    </div>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Left-aligned logo -->
+
+            <!-- Mobile toggle -->
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Centered Menu -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                     <li class="nav-item"><a class="nav-link active" href="https://www.nu.ac.bd/">Nu Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Honours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="degree.html">Degree Pass</a></li>
+                    <li class="nav-item"><a class="nav-link" href="master.html">Master’s</a>
+                        <li class="nav-item"><a class="nav-link" href="professional.html">Professional</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://103.113.200.7/">Revaluation Result</a></li>
+                         <li class="nav-item"><a class="nav-link" href="https://collegeportal.nu.ac.bd/">College wise Result</a></li>
+
+
+                        
+
+
+                    
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    
+        <div class="container py-5">
+            <div class="search-container fade-in">
+                <!-- Search Form -->
+                <form id="searchForm" method="POST" action="https://results.nu.ac.bd/pdf/honours-pdf"
+                    class="p-4 rounded-4 shadow-sm bg-white fade-in">
+                    <input type="hidden" name="_token" value="iNEqzP0leMjYyE8efi6mrJMvlkgILUvMTcbh0w0F" autocomplete="off">                    <h5 class="fw-semibold  text-success mb-4 text-center">
+                        <i class="bi bi-mortarboard-fill me-2"></i> Search Your Result for Bachelor Degree (Honours)
+                    </h5>
+
+                    <div class="row g-3">
+                        <!-- Course -->
+                        
+
+                        <!-- Examination Name -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium text-muted"><b>Examination Name</b></label>
+                        <select id="examination_name" name="examination_name" class="form-select form-select-lg rounded-3 border-primary-subtle"
+                            required="" autofocus>
+                            <option value="">----Select Examination----</option>
+                            <option value="2201">Bachelor Degree Honours 1st Year (Available from 2006)</option>
+                            <option value="2202">Bachelor Degree Honours 2nd Year (Available from 2007)</option>
+                            <option value="2203">Bachelor Degree Honours 3rd Year (Available from 2009)</option>
+                            <option value="2204">Bachelor Degree Honours 4th Year (Available from 2006)</option>
+                            <option value="2205">Bachelor Degree Honours Consolidated Result </option>
+                        </select>
+                        </div>
+
+                        <!-- Exam Year -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium text-muted"><b>Examination Year</b></label>
+                            <input type="number" name="year" min="1980" max="9999"
+                                class="form-control form-control-lg rounded-3 border-primary-subtle" placeholder="Enter Examination Year"
+                                required oninput="if(this.value.length>4) this.value=this.value.slice(0,4);">
+                        </div>
+
+                        <!-- Exam Roll -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium text-muted"><b>Exam Roll</b></label>
+                            <input type="number" name="examination_roll"
+                                class="form-control form-control-lg rounded-3 border-primary-subtle"
+                                placeholder="Enter Exam Roll">
+                        </div>
+
+                        <!-- Registration No -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-medium text-muted"><b>Registration No.</b></label>
+                            <input type="number" name="registration_no"
+                                class="form-control form-control-lg rounded-3 border-primary-subtle"
+                                placeholder="Enter Registration No" required>
+                        </div>
+
+
+                        <!-- CAPTCHA -->
+                    <div class="col-12 mb-4 text-center">
+                        <label class="form-label fw-semibold d-block mb-2">
+                            Solve this to verify you're human:
+                        </label>
+
+                        <div class="d-inline-flex align-items-center justify-content-center">
+                            <span class="fw-bold fs-5 me-2 captcha-fade" id="captchaQuestion">
+                                7 + 5 =
+                            </span>
+
+                            <input type="text" name="captcha" id="captchaInput" class="form-control text-center" style="width: 80px;"
+                                placeholder="?" required>
+
+                            <button type="button" id="refreshCaptcha" class="btn btn-outline-secondary ms-2 rounded-circle px-3">
+                                ↻
+                            </button>
+                        </div>
+
+                                            </div>
+
+
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="button" id="showPdfBtn"
+                            class="btn btn-success px-4 py-2 fw-semibold rounded-pill shadow-sm">
+                            <i class="bi bi-file-earmark-pdf-fill me-1"></i> Search Result
+                        </button>
+                    </div>
+                </form>
+
+
+            
+
+            <!--p class="fw-semibold text-primary mb-4 text-center"> <b>Bachelor Degree (Pass) Consolidated Result
+                    * Result available from Session: 2013-14</b></!--p-->
+
+                <!-- PDF Preview -->
+                <div id="pdfContainer" class="pdf-section mt-3">
+                    <div id="pdfLoader" class="text-center text-muted py-5" style="display:none;">
+                        <div class="spinner-border text-primary" role="status"></div>
+                        <p class="mt-2">Generating Results...</p>
+                    </div>
+                    <iframe id="pdfFrame"></iframe>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            // 🔁 Manual CAPTCHA refresh
+            function refreshCaptcha() {
+                const captchaSpan = $('#captchaQuestion');
+                captchaSpan.addClass('hidden'); // fade out
+
+                $.get("refresh-captcha.json", function (data) {
+                    setTimeout(function () {
+                        captchaSpan.text(data.num1 + ' + ' + data.num2 + ' =');
+                        $('#captchaInput').val('');
+                        captchaSpan.removeClass('hidden'); // fade in
+                    }, 500); // match the CSS transition duration
+                });
+            }
+
+
+            // Manual refresh button click
+            $('#refreshCaptcha').click(refreshCaptcha);
+
+            // 🔄 Auto-refresh CAPTCHA every 30 seconds
+            setInterval(refreshCaptcha, 30000); // 30,000 ms = 30 seconds
+
+            // 🧩 Fetch Examinations dynamically
+            $('#course').on('change', function () {
+                let courseId = $(this).val();
+                let examDropdown = $('#examination_name');
+                examDropdown.html('<option>Loading...</option>');
+
+                if (courseId) {
+                    $.get("get-exams-by-course.json", { course_id: courseId }, function (response) {
+                        examDropdown.empty().append('<option value="">----Select Examination----</option>');
+                        if (response.length > 0) {
+                            $.each(response, function (k, exam) {
+                                examDropdown.append('<option value="' + exam.examination_code + '">' + exam.examination_name + '</option>');
+                            });
+                        } else {
+                            examDropdown.append('<option>No examinations found</option>');
+                        }
+                    });
+                } else {
+                    examDropdown.html('<option>Select Examination</option>');
+                }
+            });
+
+            // 📄 Submit form & show PDF via AJAX
+            $('#showPdfBtn').click(async function () {
+                const form = document.getElementById('searchForm');
+                const pdfContainer = document.getElementById('pdfContainer');
+                const pdfLoader = document.getElementById('pdfLoader');
+                const pdfFrame = document.getElementById('pdfFrame');
+
+                let valid = true;
+                form.querySelectorAll('[required]').forEach(input => {
+                    if (!input.value.trim()) {
+                        input.classList.add('is-invalid');
+                        valid = false;
+                    } else {
+                        input.classList.remove('is-invalid');
+                    }
+                });
+
+                if (!valid) {
+                    alert("⚠️ Please fill in all required fields.");
+                    return;
+                }
+
+                pdfContainer.style.display = 'block';
+                pdfLoader.style.display = 'block';
+                pdfFrame.style.display = 'none';
+                pdfFrame.src = '';
+
+                const formData = new FormData(form);
+
+                try {
+                    const response = await fetch("pdf/honours-pdf.html", {
+                        method: "POST",
+                        headers: { "X-CSRF-TOKEN": "iNEqzP0leMjYyE8efi6mrJMvlkgILUvMTcbh0w0F" },
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        if (response.status === 422) {
+                            const data = await response.json();
+                            alert(data.error || 'Validation failed');
+                            refreshCaptcha(); // Auto-refresh CAPTCHA on wrong input
+                            return;
+                        }
+                        throw new Error("Failed to generate PDF.");
+                    }
+
+
+                    // const blob = await response.blob();
+                    // const url = URL.createObjectURL(blob);
+                    // pdfLoader.style.display = 'none';
+                    // pdfFrame.style.display = 'block';
+                    // pdfFrame.src = url;
+                    // pdfContainer.scrollIntoView({ behavior: 'smooth' });
+
+
+                    const blob = await response.blob();
+                    const url = URL.createObjectURL(blob);
+
+                    pdfLoader.style.display = 'none';
+
+                    // Detect mobile
+                    if (/Android|iPhone|iPad|iPod|Mobi/i.test(navigator.userAgent)) {
+
+                        // Open PDF directly in browser
+                         window.open(url, '_blank');
+
+                    } else {
+
+                        // Desktop iframe preview
+                        pdfFrame.style.display = 'block';
+                        pdfFrame.src = url;
+
+                        pdfContainer.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+
+
+
+                } catch (err) {
+                    alert(err.message);
+                    pdfLoader.style.display = 'none';
+                    refreshCaptcha(); // Ensure CAPTCHA resets after error
+                }
+            });
+        </script>
+
+
+
+
+    <footer class="text-center py-3 text-muted small">
+        © 2026 Department of ICT | National University
+    </footer>
+
+
+
+    </body>
+
+    
+</html>
